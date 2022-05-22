@@ -1,0 +1,1 @@
+dotnet ef migrations script --project "SunProject Infrastructure\SunProject Infrastructure.csproj" -s "SunProject API\SunProject API.csproj" --context SunProjectContext --output "SqlScript\0.0.1_initial_sunproject_database.sql"

@@ -1,0 +1,1 @@
+dotnet ef database update --project "SunProject Infrastructure\SunProject Infrastructure.csproj" -s "SunProject API\SunProject API.csproj" --context SunProjectContext
