@@ -61,7 +61,8 @@ namespace SunProject_Application.Command.AddPromotions
 
         private async Task AddPromotionStore(string id, List<string> stores, CancellationToken cancellationToken)
         {
-            foreach (var store in stores)
+            var storeList = stores[0].Split(',').ToList();
+            foreach (var store in storeList)
             {
                 await _context.Promotion_Store.AddAsync(new Promotion_Store()
                 {
@@ -73,6 +74,7 @@ namespace SunProject_Application.Command.AddPromotions
 
         private async Task WriteToTxt(AddPromotionsCommandRequest request, List<string> itemList, CancellationToken cancellationToken)
         {
+            var storeList = request.Stores[0].Split(',').ToList();
             List<string> itemsToAdd = new List<string>();
             itemsToAdd.Add($"FHEAD|{request.Description}|||");
 
@@ -81,7 +83,7 @@ namespace SunProject_Application.Command.AddPromotions
                 itemsToAdd.Add($"FITEM|{item}|{request.Type}|{request.Value}");
             }
 
-            foreach(string store in request.Stores)
+            foreach(string store in storeList)
             {
                 itemsToAdd.Add($"FSTORE|{store}|{request.StartDate.ToString("yyyyMMdd")}|{request.EndDate.ToString("yyyyMMdd")}");
             }

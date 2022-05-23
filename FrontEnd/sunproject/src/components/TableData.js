@@ -1,32 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-const Users = [
-  {
-    id: 1,
-    selected: false,
-    store: "111",
-    store_Name: "Toko Jakarta"
-  },
-  {
-    id: 2,
-    selected: false,
-    storesId: "222",
-    Name: "Toko Malang"
-  },
-  {
-    id: 3,
-    selected: false,
-    storesId: "333",
-    Name: "Toko Surabaya"
-  },
-];
-
 class SelectTableComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      List: [{id:'', store: '', store_Name:'', selected:false}],
+      List: [],
       MasterChecked: false,
       SelectedList: [],
     };
@@ -67,6 +46,7 @@ class SelectTableComponent extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log(this.state.SelectedList)
     // Typical usage (don't forget to compare props):
     this.props.onSelectedChange(this.state.SelectedList);
   }
@@ -74,6 +54,7 @@ class SelectTableComponent extends React.Component {
   // Update List Item's state and Master Checkbox State
   onItemCheck(e, item) {
     let tempList = this.state.List;
+    console.log(item)
     tempList.map((user) => {
       if (user.store === item.store) {
         user.selected = e.target.checked;
@@ -81,6 +62,7 @@ class SelectTableComponent extends React.Component {
       return user;
     });
 
+    console.log(tempList)
     //To Control Master Checkbox State
     const totalItems = this.state.List.length;
     const totalCheckedItems = tempList.filter((e) => e.selected).length;

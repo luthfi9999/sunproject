@@ -28,7 +28,9 @@ export default function PromotionForm() {
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    var stores= storeList.map(x => x.storesId);
+    console.log(storeList);
+    var stores= storeList.map(x => x.store);
+    console.log(stores)
         formData.append("Id", 'P202101010005');
         formData.append("Description", data.Description)
         formData.append("type", data.Type)
