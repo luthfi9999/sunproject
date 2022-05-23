@@ -5,7 +5,7 @@ import SelectTableComponent from "./TableData";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-
+import axios from "axios";
 export default function PromotionForm() {
   const schema = yup.object({
     Id: yup.string(),
@@ -19,19 +19,23 @@ export default function PromotionForm() {
   });
 
   const [storeList, SetStoreList] = useState(null);
-  const [clear, SetClear] = useState(false);
-
-  useEffect(()=>{
-    if(clear === true)
-      SetClear(false)
-  });
+  const [promoId, setPromoId] = useState("")
+  useEffect(() => {
+    axios
+    .get("http://localhost:5281/Id")
+    .then( res => {
+      console.log(res.data)
+      setPromoId(res.data.id)
+    })
+    .catch( err => console.log(err))
+  }, []);
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    console.log(storeList);
+    console.log(promoId);
     var stores= storeList.map(x => x.store);
     console.log(stores)
-        formData.append("Id", 'P202101010005');
+        formData.append("Id", promoId);
         formData.append("Description", data.Description)
         formData.append("type", data.Type)
         formData.append("Value", data.Value)
@@ -58,7 +62,7 @@ export default function PromotionForm() {
           <input
             disabled={true}
             className="text-input"
-            value="P202101010001"
+            value={promoId}
             {...register("Id", { required: true })}
           />
         </div>

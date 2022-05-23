@@ -1,5 +1,4 @@
 .promotion{
-    margin: 20px;
     display: block;
     justify-content: flex-start;
     align-items: center;
@@ -8,6 +7,8 @@
     height: 83vh;
     border-radius: 10px;
     border-color: bisque;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .title{
@@ -24,7 +25,7 @@
     flex-direction: column;
     border:3px solid;    
     width: 97%;
-    height: 83%;
+    height: 75%;
     border-radius: 10px;
     border-color: bisque;
     font-size: 23px;

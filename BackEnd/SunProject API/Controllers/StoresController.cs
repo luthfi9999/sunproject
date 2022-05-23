@@ -2,6 +2,7 @@
 using SunProject_Application.Command.AddPromotions;
 using SunProject_Application.Command.AddStores;
 using SunProject_Application.Command.GetStores;
+using SunProject_Application.Command.GetValidId;
 using SunProject_Infrastructure;
 
 namespace SunProject_API.Controllers
@@ -26,6 +27,12 @@ namespace SunProject_API.Controllers
         public async Task<ActionResult<GetStoreCommandResponse>> GetStores()
         {
             return await Mediator.Send(new GetStoresCommandRequest());
+        }
+
+        [HttpGet("/Id")]
+        public async Task<ActionResult<GetValidIdCommandResponse>> GetId()
+        {
+            return await Mediator.Send(new GetValidIdCommandRequest());
         }
     }
 }

@@ -88,7 +88,7 @@ namespace SunProject_Application.Command.AddPromotions
                 itemsToAdd.Add($"FSTORE|{store}|{request.StartDate.ToString("yyyyMMdd")}|{request.EndDate.ToString("yyyyMMdd")}");
             }
 
-            await File.WriteAllLinesAsync($"{request.Id}.txt", itemsToAdd, cancellationToken);
+            await File.WriteAllLinesAsync($"generatedFiles/{request.Id}.txt", itemsToAdd, cancellationToken);
         }
     }
 }
