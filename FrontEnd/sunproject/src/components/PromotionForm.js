@@ -104,7 +104,6 @@ export default function PromotionForm() {
           Store
           <SelectTableComponent
             onSelectedChange={onSelectedRowChange}
-            clear={clear}
           />
         </div>
         <p>{errors.Stores?.message}</p>
