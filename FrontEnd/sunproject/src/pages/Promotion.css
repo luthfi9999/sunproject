@@ -1,0 +1,45 @@
+.promotion{
+    margin: 20px;
+    display: block;
+    justify-content: flex-start;
+    align-items: center;
+    border:3px solid black;    
+    width: 95vw;
+    height: 83vh;
+    border-radius: 10px;
+    border-color: bisque;
+}
+
+.title{
+    padding: 20px;
+    font-weight: bold;
+}
+
+.sub-promotion
+{
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    border:3px solid;    
+    width: 97%;
+    height: 83%;
+    border-radius: 10px;
+    border-color: bisque;
+    font-size: 23px;
+    padding: 30px;
+    font-weight: bold;
+    gap: 20px;
+}
+
+.promotion
+{
+    width: 100%;
+    display: flex;
+}
+
+.button
+{
+    width: 50%;
+}

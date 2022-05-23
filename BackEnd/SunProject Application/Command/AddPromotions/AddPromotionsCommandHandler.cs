@@ -33,7 +33,8 @@ namespace SunProject_Application.Command.AddPromotions
             await AddPromotionItem(request.Id, itemNames, cancellationToken);
             await AddPromotionStore(request.Id, request.Stores, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
-            
+            await WriteToTxt(request, itemNames, cancellationToken);
+
             return PrepareResponse();
         }
 
@@ -68,6 +69,24 @@ namespace SunProject_Application.Command.AddPromotions
                     StoreId = store
                 }, cancellationToken);
             }
+        }
+
+        private async Task WriteToTxt(AddPromotionsCommandRequest request, List<string> itemList, CancellationToken cancellationToken)
+        {
+            List<string> itemsToAdd = new List<string>();
+            itemsToAdd.Add($"FHEAD|{request.Description}|||");
+
+            foreach(string item in itemList)
+            {
+                itemsToAdd.Add($"FITEM|{item}|{request.Type}|{request.Value}");
+            }
+
+            foreach(string store in request.Stores)
+            {
+                itemsToAdd.Add($"FSTORE|{store}|{request.StartDate.ToString("yyyyMMdd")}|{request.EndDate.ToString("yyyyMMdd")}");
+            }
+
+            await File.WriteAllLinesAsync($"{request.Id}.txt", itemsToAdd, cancellationToken);
         }
     }
 }
