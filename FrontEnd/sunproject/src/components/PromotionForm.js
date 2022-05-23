@@ -64,6 +64,7 @@ export default function PromotionForm() {
         <div className="promo-item">
           Promo Type
           <select
+            onReset={0}
             className="dropdown"
             {...register("Type", { required: true })}
           >
@@ -78,7 +79,7 @@ export default function PromotionForm() {
         <div className="promo-item">
           Value Type
           <div className="value-type">
-            <select className="dropdown-half">
+            <select onReset={0} className="dropdown-half">
               <option value="" selected hidden>
                 Percentage Or Amount
               </option>

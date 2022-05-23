@@ -5,7 +5,7 @@ class SelectTableComponent extends React.Component {
     super(props);
     console.log(this.props)
     this.state = {
-      List: this.props.storeData,
+      List: [],
       MasterChecked: false,
       SelectedList: [],
     };
@@ -43,6 +43,7 @@ class SelectTableComponent extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log('selected' + this.state.SelectedList);
     // Typical usage (don't forget to compare props):
     this.props.onSelectedChange(this.state.SelectedList);
   }
